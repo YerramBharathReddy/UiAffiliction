@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla JS SPA Demo</title>
+    <link rel="stylesheet" href="./css/home.css"> 
+</head>
+<body>
+
+    <header id="app-header">
+        <h1>Single Page Application (SPA) Demo</h1>
+        
+        <nav id="main-nav">
+            <button id="menu-toggle">Menu Links ▼</button>
+            <div id="dropdown-menu" class="dropdown-content">
+                <a href="#" data-page="home">Home</a>
+                <a href="#" data-page="about">About</a>
+                <a href="#" data-page="services">Services</a>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        
+        <aside id="side-nav">
+            <p style="font-weight: bold; margin-top: 0;">Main Navigation</p>
+            <ul>
+                <li><a href="#" data-page="profile">👤 User Profile</a></li>
+                <li><a href="#" data-page="newPage">📄 AICTE Affiliation Form</a></li>
+                <li><a href="#" data-page="settings">⚙️ Settings</a></li>
+            </ul>
+        </aside>
+
+        <main id="main-content">
+            <h2>Loading...</h2>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>

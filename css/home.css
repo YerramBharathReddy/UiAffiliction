@@ -1,0 +1,87 @@
+/* --- Global & Layout --- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+.main-container {
+    display: flex; /* Enables side-by-side layout for nav and main content */
+    min-height: calc(100vh - 60px); /* Ensures the container fills the screen height */
+}
+
+/* 1. Centering the Header */
+#app-header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 10px 0;
+    text-align: center; /* THIS CENTERS THE H1 TEXT AND NAV */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 2. Dropdown Menu Styling */
+#main-nav {
+    position: relative; /* Container for the dropdown */
+    display: inline-block;
+    margin-top: 5px;
+}
+#menu-toggle {
+    background-color: #34495e;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: #ffffff;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 10;
+    right: 0; /* Align to the right of the button */
+    border-radius: 4px;
+    overflow: hidden;
+}
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s;
+}
+.dropdown-content a:hover {
+    background-color: #ecf0f1;
+}
+/* Class added by JS when button is clicked */
+.show {
+    display: block;
+}
+
+/* 3. and 4. Side Nav & Main Content Styling */
+#side-nav {
+    width: 200px;
+    background-color: #ecf0f1;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+#side-nav ul {
+    list-style: none;
+    padding: 0;
+}
+#side-nav a {
+    text-decoration: none;
+    color: #2c3e50;
+    display: block;
+    padding: 8px 0;
+}
+#side-nav a:hover {
+    color: #3498db;
+}
+
+#main-content {
+    flex-grow: 1; /* Takes up the remaining space */
+    padding: 20px;
+    background-color: white;
+}

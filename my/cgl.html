@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New B.Tech College Permission Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <!-- <link href="./css/gov.css" rel="stylesheet"> -->
+</head>
+
+<body>
+
+<div class="container-fluid py-4 dashboard-bg">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <span class="text-muted small">College Portal</span>
+            <h2 class="mb-0">New Diploma  College Permission Dashboard</h2>
+        </div>
+        <button class=" ApplyAffiliation  px-4 wipe-in p-2 rounded " style="border: none;">
+            <i class="fas fa-file-circle-plus"></i> Apply for Affiliation
+        </button>
+    </div>
+
+    <!-- Application Status Cards -->
+    <div class="row mb-4">
+
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card card-shadow text-center">
+                <div class="card-body">
+                    <small class="text-muted">Application ID</small>
+                    <h5 class="text-primary">BT2025-00128</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card card-shadow text-center">
+                <div class="card-body">
+                    <small class="text-muted">Academic Year</small>
+                    <h5>2025–26</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card card-shadow text-center">
+                <div class="card-body">
+                    <small class="text-muted">Current Status</small>
+                    <h5 class="text-warning">Under Scrutiny</h5>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card card-shadow text-center">
+                <div class="card-body">
+                    <small class="text-muted">Last Updated</small>
+                    <h6>12-Jul-2025</h6>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Proposed Courses -->
+    <div class="row mb-4">
+        <div class="col-lg-8 mb-3">
+            <div class="card card-shadow">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    Proposed Diploma Courses & Intake
+                    <button class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-plus"></i> Add Course
+                    </button>
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-bordered mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Branch</th>
+                                <th>Proposed Intake</th>
+                                <th>Faculty Available</th>
+                                <th>Lab Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CSE</td>
+                                <td>120</td>
+                                <td>Yes</td>
+                                <td class="text-success">Ready</td>
+                            </tr>
+                            <tr>
+                                <td>ECE</td>
+                                <td>60</td>
+                                <td>Partial</td>
+                                <td class="text-warning">In Progress</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inspection Status -->
+        <div class="col-lg-4 mb-3">
+            <div class="card card-shadow">
+                <div class="card-header">Inspection Status</div>
+                <div class="card-body">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success"></i>
+                            Application Submitted
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-check-circle text-success"></i>
+                            Document Verification
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-clock text-warning"></i>
+                            Committee Inspection
+                        </li>
+                        <li class="mb-2">
+                            <i class="fas fa-hourglass-half text-muted"></i>
+                            Final Approval
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mandatory Documents Upload -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card card-shadow">
+                <div class="card-header">
+                    Mandatory Document Upload (B.Tech New College)
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Document Name</th>
+                                <th>Required</th>
+                                <th>Uploaded</th>
+                                <th>Status</th>
+                                <th>Upload</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Land Ownership / Lease Documents</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td><span class="badge bg-success">Accepted</span></td>
+                                <td><i class="fas fa-upload text-success"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Building Plan Approval</td>
+                                <td>Yes</td>
+                                <td>Yes</td>
+                                <td><span class="badge bg-warning">Under Review</span></td>
+                                <td><i class="fas fa-upload"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Fire & Safety Certificate</td>
+                                <td>Yes</td>
+                                <td>No</td>
+                                <td><span class="badge bg-danger">Pending</span></td>
+                                <td><i class="fas fa-upload text-danger"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Faculty Appointment Letters</td>
+                                <td>Yes</td>
+                                <td>Partial</td>
+                                <td><span class="badge bg-warning">Deficiency</span></td>
+                                <td><i class="fas fa-upload"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Remarks & Action Items -->
+    <div class="row mb-4">
+        <div class="col-lg-6 mb-3">
+            <div class="card card-shadow">
+                <div class="card-header">University / Govt Remarks</div>
+                <div class="card-body">
+                    <p class="small">⚠ Fire Safety Certificate must be uploaded.</p>
+                    <p class="small">⚠ ECE faculty strength needs enhancement.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-3">
+            <div class="card card-shadow">
+                <div class="card-header">Action Checklist</div>
+                <div class="card-body">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox">
+                        <label class="form-check-label">
+                            Upload Fire Safety Certificate
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox">
+                        <label class="form-check-label">
+                            Add ECE Faculty Details
+                        </label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox">
+                        <label class="form-check-label">
+                            Submit Final Application
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

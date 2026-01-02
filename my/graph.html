@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Animated 3D Fluent College Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+/* ================= ROOT DASHBOARD ================= */
+.dashboard-wrapper {
+    /* --- COLOR PALETTE (Soft & Cool) --- */
+    --green-dark:#065206 !important; --green-light:#bdefbd75 !important;
+    --blue-dark:#013259 !important; --blue-light:#bde5ff75 !important;
+    --orange-dark:#7a4303 !important; --orange-light:#ffe6bd75 !important;
+    --red-dark:#8b0000 !important; --red-light:#ffc2c275 !important;
+    --teal-dark:#004d40 !important; --teal-light:#b3fff275 !important;
+
+    /* --- DESIGN VARIABLES (Enhanced 3D/Fluent) --- */
+    --bg-main:#fafafa !important; /* Clean Off-White Background */
+    --surface:#ffffff !important;
+    --radius:22px;
+
+    /* Enhanced Soft 3D Shadow for deeper lift */
+    --shadow-soft:
+        8px 8px 20px rgba(0,0,0,.1), /* Stronger shadow side */
+        -8px -8px 20px rgba(255,255,255,1), /* Brighter highlight side */
+        0 4px 10px rgba(0,0,0,.05); /* Overall lift */
+
+    background: radial-gradient(circle at top left,#ffffff,var(--bg-main));
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    padding:40px 0 60px;
+}
+
+/* ================= HERO HEADER (Animated) ================= */
+.dashboard-hero{
+    background:linear-gradient(135deg,var(--blue-dark),#0b5ed7);
+    color:#fff;
+    padding:35px 40px;
+    border-radius:24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 20px 40px rgba(1,50,89,.3);
+    transition: transform 0.5s ease-out;
+    animation: floatingHero 6s ease-in-out infinite; /* Gentle float */
+}
+.dashboard-hero h3{font-weight:800;margin-bottom:5px}
+.dashboard-hero p{margin:0;opacity:.9}
+.dashboard-hero i{font-size:3.8rem;opacity:.25}
+
+@keyframes floatingHero {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* ================= SECTION TITLE ================= */
+.section-title{
+    margin-top:60px;
+    font-size:1.25rem;
+    font-weight:700;
+    color:var(--blue-dark);
+    padding-left:15px;
+    position:relative;
+}
+.section-title::before{
+    content:"";
+    position:absolute;
+    left:0;top:4px;
+    height:75%;width:5px;
+    border-radius:5px;
+    background:linear-gradient(to bottom,var(--blue-dark),#0b5ed7);
+}
+.section-title.text-center {
+    padding-left: 0;
+}
+.section-title.text-center::before {
+    content: none;
+}
+
+/* ================= KPI CARD (3D + Scroll Animation) ================= */
+.kpi-box{
+    background:var(--surface);
+    border-radius:var(--radius);
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:var(--shadow-soft);
+    transition:box-shadow .4s, transform .4s, opacity .8s ease-out; /* Add opacity for fade-in */
+    border:1px solid rgba(0,0,0,.05);
+    
+    /* INITIAL STATE FOR SCROLL ANIMATION */
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+}
+.kpi-box.animate {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.kpi-box:hover{
+    transform:translateY(-8px); /* Deeper hover lift */
+    box-shadow:0 18px 35px rgba(0,0,0,.2);
+}
+
+/* KPI Circle */
+.kpi-circle{
+    width:100px;height:100px;
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin:auto;
+    /* Deeper inset for a more pronounced 'button' look */
+    box-shadow:inset 3px 3px 8px rgba(0,0,0,.15),
+               inset -3px -3px 8px rgba(255,255,255,.9);
+}
+.kpi-circle i{
+    font-size:14px;
+    margin-top:6px;
+    animation:floatIcon 3s ease-in-out infinite;
+}
+@keyframes floatIcon{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-4px)}
+}
+
+.counter-text{font-size:1.8rem;font-weight:800}
+.kpi-label{
+    margin-top:15px;
+    font-size:.95rem;
+    font-weight:600;
+    color:#6c757d;
+    text-transform:uppercase;
+}
+
+/* ================= COLOR UTILITIES ================= */
+.bg-cool-green{background:var(--green-light);color:var(--green-dark)}
+.bg-cool-blue{background:var(--blue-light);color:var(--blue-dark)}
+.bg-cool-orange{background:var(--orange-light);color:var(--orange-dark)}
+.bg-cool-red{background:var(--red-light);color:var(--red-dark)}
+.bg-cool-teal{background:var(--teal-light);color:var(--teal-dark)}
+
+.bg-cool-green .counter-text, .bg-cool-green i { color: var(--green-dark); }
+.bg-cool-blue .counter-text, .bg-cool-blue i { color: var(--blue-dark); }
+.bg-cool-orange .counter-text, .bg-cool-orange i { color: var(--orange-dark); }
+.bg-cool-red .counter-text, .bg-cool-red i { color: var(--red-dark); }
+.bg-cool-teal .counter-text, .bg-cool-teal i { color: var(--teal-dark); }
+
+/* ================= PROGRESS CIRCLE ================= */
+.progress-circle{
+    width:150px;height:150px;
+    border-radius:50%;
+    background:conic-gradient(var(--green-dark) calc(var(--value)*1%),var(--bg-main) 0);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:var(--shadow-soft);
+    opacity: 0; /* Initial state for animation */
+    transform: scale(0.8);
+    transition: all 1s ease-out;
+}
+.progress-circle.animate {
+    opacity: 1;
+    transform: scale(1);
+}
+.progress-circle span{
+    width:115px;height:115px;
+    border-radius:50%;
+    background:rgba(255,255,255,.88);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:1.5rem;
+    font-weight:800;
+    color:var(--green-dark);
+}
+</style>
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+<div class="container">
+
+<div class="dashboard-hero mb-5">
+    <div>
+        <h3>New Diploma College Permission</h3>
+        <p>Application overview & inspection progress</p>
+    </div>
+    <i class="fas fa-university"></i>
+</div>
+
+<div class="row g-4 mb-5" data-animation-group>
+    <div class="col-md-3">
+        <div class="kpi-box">
+            <div class="kpi-circle bg-cool-blue counter" data-target="128">
+                <span class="counter-text">0</span>
+                <i class="fas fa-hashtag"></i>
+            </div>
+            <div class="kpi-label">Application ID</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="kpi-box">
+            <div class="kpi-circle bg-cool-teal counter" data-target="2025">
+                <span class="counter-text">0</span>
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="kpi-label">Academic Year</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="kpi-box">
+            <div class="kpi-circle bg-cool-orange counter" data-target="1">
+                <span class="counter-text">0</span>
+                <i class="fas fa-clock"></i>
+            </div>
+            <div class="kpi-label">Under Scrutiny</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="kpi-box">
+            <div class="kpi-circle bg-cool-green counter" data-target="12">
+                <span class="counter-text">0</span>
+                <i class="fas fa-sync-alt"></i>
+            </div>
+            <div class="kpi-label">Last Updated</div>
+        </div>
+    </div>
+</div>
+
+<h6 class="section-title">Proposed Course Status</h6>
+<div class="row g-4 mb-5" data-animation-group>
+    <div class="col-md-3">
+        <div class="kpi-box">
+            <div class="kpi-circle bg-cool-blue counter" data-target="2">
+                <span class="counter-text">0</span>
+                <i class="fas fa-book-open"></i>
+            </div>
+            <div class="kpi-label">Branches</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="kpi-box">
+            <div class="kpi-circle bg-cool-green counter" data-target="180">
+                <span class="counter-text">0</span>
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="kpi-label">Total Intake</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="kpi-box">
+            <div class="kpi-circle bg-cool-orange counter" data-target="1">
+                <span class="counter-text">0</span>
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="kpi-label">Faculty Partial</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="kpi-box">
+            <div class="kpi-circle bg-cool-red counter" data-target="1">
+                <span class="counter-text">0</span>
+                <i class="fas fa-vials"></i>
+            </div>
+            <div class="kpi-label">Lab In Progress</div>
+        </div>
+    </div>
+</div>
+
+<h6 class="section-title">Document Verification Overview</h6>
+<div class="row g-4" data-animation-group>
+    <div class="col-md-3">
+        <div class="kpi-box">
+            <div class="kpi-circle bg-cool-green counter" data-target="1">
+                <span class="counter-text">0</span>
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="kpi-label">Accepted</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="kpi-box">
+            <div class="kpi-circle bg-cool-orange counter" data-target="1">
+                <span class="counter-text">0</span>
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="kpi-label">Under Review</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="kpi-box">
+            <div class="kpi-circle bg-cool-red counter" data-target="1">
+                <span class="counter-text">0</span>
+                <i class="fas fa-file-excel"></i>
+            </div>
+            <div class="kpi-label">Pending</div>
+        </div>
+    </div>
+
+    <div class="col-md-3">
+        <div class="kpi-box">
+            <div class="kpi-circle bg-cool-blue counter" data-target="1">
+                <span class="counter-text">0</span>
+                <i class="fas fa-times-circle"></i>
+            </div>
+            <div class="kpi-label">Deficiency</div>
+        </div>
+    </div>
+</div>
+
+<h6 class="section-title text-center">Inspection Progress</h6>
+<div class="d-flex justify-content-center mt-4">
+    <div class="progress-circle" style="--value:75">
+        <span>75%</span>
+    </div>
+</div>
+
+</div>
+</div>
+
+<script>
+// ===================================
+// 1. SCROLL ANIMATION LOGIC (Intersection Observer)
+// ===================================
+
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.2 // Trigger when 20% of the element is visible
+};
+
+const observerCallback = (entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Add the 'animate' class when element enters viewport
+            entry.target.classList.add('animate');
+            
+            // If it's a KPI box, also start the counter animation
+            if (entry.target.classList.contains('kpi-box')) {
+                startCounterAnimation(entry.target);
+            }
+            
+            // Stop observing after animation is triggered once
+            observer.unobserve(entry.target); 
+        }
+    });
+};
+
+const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+// Target all KPI boxes
+document.querySelectorAll('.kpi-box').forEach(box => {
+    observer.observe(box);
+});
+
+// Target the Progress Circle
+document.querySelectorAll('.progress-circle').forEach(circle => {
+    observer.observe(circle);
+});
+
+
+
+// 2. COUNTER ANIMATION LOGIC// 
+
+const startedCounters = new Set(); // Prevent counters from restarting
+
+function startCounterAnimation(boxElement) {
+    const counterElement = boxElement.querySelector('.counter');
+    if (!counterElement || startedCounters.has(counterElement)) {
+        return;
+    }
+
+    const target = +counterElement.dataset.target;
+    const span = counterElement.querySelector('.counter-text');
+    let count = 0;
+    
+    if (!span || target <= 0) {
+        if (span) span.innerText = target;
+        return;
+    }
+    
+    startedCounters.add(counterElement); 
+    const run = () => {
+        const step = target / 60; 
+        
+        count += step;
+
+        if (count < target) {
+            span.innerText = Math.ceil(count);
+            requestAnimationFrame(run);
+        } else {
+            span.innerText = target;
+        }
+    };
+    
+    setTimeout(() => {
+        requestAnimationFrame(run);
+    }, 300); 
+}
+
+document.querySelectorAll('.kpi-box').forEach(box => {
+    if (box.getBoundingClientRect().top < window.innerHeight * 0.5) {
+        box.classList.add('animate');
+        startCounterAnimation(box);
+    }
+});
+</script>
+
+</body>
+</html>

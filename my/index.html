@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Affiliation Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <!-- <link href="./css/style.css" rel="stylesheet"> -->
+    <!-- <link href="./css/modify.css" rel="stylesheet"> -->
+    <!-- <link href="./css/new.css" rel="stylesheet"> -->
+    <link href="./css/3D.css" rel="stylesheet">
+    <style>
+        body{
+            font-family: sans-serif;
+            color: #343a40;
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body>
+   
+
+<div class="d-flex" id="wrapper">
+
+    <div id="sidebar-wrapper">
+        <!-- <div class="sidebar-heading">Home</div> -->
+
+        <div class="list-group list-group-flush">
+
+            <!-- <a class="list-group-item active" href="#" onclick="loadPage('cgl.html')">
+                <i class="fas fa-house"></i> Dashboard
+            </a>
+
+            <div class="sidebar-subtitle"></div>
+
+            <a class="list-group-item" href="#" onclick="loadPage('AicteAffiliationForm.html')">
+                <i class="fas fa-chart-simple"></i> AICTE Affiliation Form
+            </a>
+
+            <a class="list-group-item" href="#" onclick="loadPage('SbtetAffiliationForms.html')">
+                <i class="fas fa-flask"></i> SBTET Affiliation Forms
+            </a> -->
+            <a id="menu-dashboard"
+   class="list-group-item  mt-3"
+   href="javascript:void(0)"
+   onclick="setActive(this); loadPage('cgl.html')">
+   
+    <i class="fas fa-house"></i> Dashboard
+</a>
+
+  <div class="sidebar-subtitle"></div>
+<a class="list-group-item"
+   href="javascript:void(0)"
+   onclick="setActive(this); loadPage('AicteAffiliationForm.html')">
+    <i class="fas fa-chart-simple"></i> AICTE Affiliation Form
+</a>
+
+<a class="list-group-item"
+   href="javascript:void(0)"
+   onclick="setActive(this); loadPage('SbtetAffiliationForms.html')">
+    <i class="fas fa-flask"></i> SBTET Affiliation Forms
+</a>
+
+
+            <a class="list-group-item" href="javascript:void(0)" onclick="setActive(this); loadPage('StaffManage.html')">
+                <i class="fas fa-wrench"></i> Manage Staff
+            </a>
+
+            <a class="list-group-item" href="javascript:void(0)" onclick=" setActive(this); loadPage('reports.html')">
+                <i class="fas fa-folder"></i> Reports
+            </a>
+             <a class="list-group-item" href="javascript:void(0)" onclick="setActive(this); loadPage('Notifications.html')">
+                <i class="fas fa-folder"></i> Notifications
+            </a>
+
+            <!-- <a class="list-group-item" href="#" onclick="loadPage('Notifications.html')">
+                <i class="fas fa-file-alt"></i> Notifications  </a>
+            <div class="sidebar-subtitle">User Interface</div>
+
+            <a class="list-group-item" href="#">
+                <i class="fas fa-layer-group"></i> UI Teamspouses
+            </a> -->
+
+        </div>
+    </div>
+
+
+    
+    <div id="page-content-wrapper">
+         <div class="row ms-1">
+         <div class="col-lg-1 col-md-1 col-sm-12"> </div>
+        <div class="col-lg-1 col-md-1 col-sm-12 "><img src="./images/sbtet-logo.png" height="70px" width="70px"></div>
+         <!-- <div class="col-lg-8 col-md-8 col-sm-12 header-text"> State board of Technical Education and Training <small>Affiliation of colleges</small></div> -->
+          <div class="col-lg-8 col-md-8 col-sm-12 header-text"><h1>State board of Technical Education and Training</h1> <small class="header-subtitle">Affiliation of colleges</small></div>
+          <div class="col-lg-1 col-md-1 col-sm-12"><img src="./images/TelanganaRaisinglogo.jpg" height="70px" width="70px"></div>
+           <div class="col-lg-1 col-md-1 col-sm-12 mt-2"><div class="font-controls">
+    <button onclick="changeFontSize(1)" aria-label="Increase font size">A+</button>
+    <button onclick="resetFontSize()" aria-label="Reset font size">A</button>
+    <button onclick="changeFontSize(-1)" aria-label="Decrease font size">A-</button>
+</div>
+ </div>
+
+
+    </div>
+
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+
+                <button class="btn btn-primary" id="sidebarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <span class="navbar-brand-custom d-none d-lg-block">
+                    xyz college
+                </span>
+
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item me-3"><i class="fas fa-bell" style="color: red;"></i></li>
+                    <li class="nav-item me-3"><i class="fas fa-gear"></i></li>
+                    <li class="nav-item me-3 d-none d-md-block"> Bharath</li>
+                    <li class="nav-item">
+                        <img src="./images/sbtet-logo.png" height="40px" width="40px" class="rounded-circle">
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+
+        <div id="content" class="container-fluid dashboard-bg "></div>
+        <div></div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    const contentDiv = document.getElementById("content");
+
+
+    function loadPage(page) {
+    fetch(page)
+        .then(res => {
+            if (!res.ok) throw new Error("Page not found");
+            return res.text();
+        })
+        .then(html => { contentDiv.innerHTML = html;
+           location.hash = page.replace('.html', '');
+        })
+        .catch(() => {
+            contentDiv.innerHTML = `
+                <div class="alert alert-danger">
+                    Failed to load ${page}
+                </div>`;
+        });
+}
+
+    // Default page
+   
+function setActive(clickedItem) {
+        document
+            .querySelectorAll('#sidebar-wrapper .list-group-item')
+            .forEach(item => item.classList.remove('active'));
+
+        clickedItem.classList.add('active');
+    }
+
+    window.onload = () => {
+        // Load dashboard by default
+        loadPage('cgl.html');
+
+        // Set dashboard menu active
+        const dashboard = document.getElementById('menu-dashboard');
+        if (dashboard) dashboard.classList.add('active');
+    };
+
+
+    // Sidebar toggle 
+    document.getElementById("sidebarToggle")
+        .addEventListener("click", () => {
+            document.getElementById("wrapper").classList.toggle("toggled");
+        });
+
+     
+    function setActive(clickedItem) {
+        const items = document.querySelectorAll(
+            '#sidebar-wrapper .list-group-item'
+        );
+
+        items.forEach(item => item.classList.remove('active'));
+        clickedItem.classList.add('active');
+    }
+
+    // font size 
+     let currentFontSize = 16; 
+    const minFontSize = 10;
+    const maxFontSize =50;
+
+    function changeFontSize(step) {
+        currentFontSize += step;
+
+        if (currentFontSize < minFontSize) currentFontSize = minFontSize;
+        if (currentFontSize > maxFontSize) currentFontSize = maxFontSize;
+
+        document.body.style.fontSize = currentFontSize + "px";
+    }
+
+    function resetFontSize() {
+        currentFontSize = 16;
+        document.body.style.fontSize = currentFontSize + "px";
+    }
+
+</script>
+
+</body>
+</html>
